@@ -3,22 +3,7 @@ $basePath = isset($basePath) ? $basePath : '';
 ?>
 <!-- Footer -->
 <footer class="footer">
-    <!-- Newsletter Section -->
-    <div class="footer-newsletter">
-        <div class="container">
-            <div class="newsletter-content">
-                <div class="newsletter-text">
-                    <h3><i data-lucide="mail"></i> Stay Updated</h3>
-                    <p>Subscribe to our newsletter for the latest updates and industry insights.</p>
-                </div>
-                <form class="newsletter-form" action="#" method="POST">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="btn btn-accent">Subscribe</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
+    
     <!-- Main Footer -->
     <div class="footer-main">
         <div class="container">
@@ -71,7 +56,7 @@ $basePath = isset($basePath) ? $basePath : '';
                     <div class="contact-item">
                         <div class="contact-icon"><i data-lucide="map-pin"></i></div>
                         <div class="contact-text">
-                            <span>Office Address</span>
+                            <span>Bus Stand, Municipal Complex, Cultus India, Kottaramattom, Pala, Kerala 686575</span>
                             <p>India</p>
                         </div>
                     </div>

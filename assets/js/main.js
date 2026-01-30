@@ -9,14 +9,31 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileToggle.classList.toggle('active');
         });
 
-        // Close menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
+        // Close menu when clicking a link (except dropdown trigger)
+        navLinks.querySelectorAll('a:not(.dropdown-trigger)').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 mobileToggle.classList.remove('active');
             });
         });
     }
+
+    // Mobile Dropdown Toggle
+    const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+    dropdownTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            // Check if click was on the icon
+            const isIconClick = e.target.closest('.dropdown-icon') || e.target.closest('svg');
+
+            // Only prevent default and toggle on mobile IF icon is clicked
+            if (window.innerWidth <= 768 && isIconClick) {
+                e.preventDefault();
+                const dropdown = trigger.closest('.dropdown');
+                dropdown.classList.toggle('open');
+            }
+            // Otherwise allow default navigation to services.php
+        });
+    });
 
     // Smooth Scroll for Anchor Links (Native is good, but this adds offset for sticky header)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

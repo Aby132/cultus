@@ -338,7 +338,7 @@
             <p>Whether you need lightning protection, trade services, or apparel exports – we're here to help.</p>
             <div class="cta-buttons">
                 <a href="index.php#contact" class="btn btn-accent"><i class="bi bi-envelope-fill"></i> Contact Us</a>
-                <a href="index.php#verticals" class="btn btn-primary"><i class="bi bi-grid-fill"></i> Explore Our Services</a>
+                <a href="services.php" class="btn btn-primary"><i class="bi bi-grid-fill"></i> Explore Our Services</a>
             </div>
         </div>
     </section>

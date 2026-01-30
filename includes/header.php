@@ -9,11 +9,7 @@ $basePath = isset($basePath) ? $basePath : '';
             <span><i data-lucide="mail"></i> info@cultusindia.com</span>
             <span><i data-lucide="phone"></i> +91 981 874 7608</span>
         </div>
-        <div class="top-bar-right">
-            <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-            <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
-            <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
-        </div>
+       
     </div>
 </div>
 
@@ -38,7 +34,7 @@ $basePath = isset($basePath) ? $basePath : '';
             <li><a href="<?php echo $basePath; ?>index.php">Home</a></li>
             <li><a href="<?php echo $basePath; ?>about.php">About</a></li>
             <li class="dropdown">
-                <a href="<?php echo $basePath; ?>index.php#verticals" class="dropdown-trigger">
+                <a href="<?php echo $basePath; ?>services.php" class="dropdown-trigger">
                     Services <i data-lucide="chevron-down" class="dropdown-icon"></i>
                 </a>
                 <ul class="dropdown-menu">
@@ -71,7 +67,7 @@ $basePath = isset($basePath) ? $basePath : '';
                     </li>
                 </ul>
             </li>
-            <li><a href="<?php echo $basePath; ?>index.php#contact" class="nav-cta">
+            <li><a href="<?php echo $basePath; ?>quote.php" class="nav-cta">
                 <i data-lucide="send"></i> Get Quote
             </a></li>
         </ul>
