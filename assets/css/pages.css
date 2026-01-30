@@ -1439,7 +1439,88 @@
     transition: all 0.3s ease;
 }
 
-.btn-outline-light:hover {
-    background: white;
-    color: var(--color-primary);
+/* Responsive Adjustments for Services Page */
+@media (max-width: 992px) {
+    .services-wrapper {
+        gap: 60px;
+    }
+
+    .service-row {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .service-row.reverse {
+        direction: ltr;
+        /* Reset direction for tablet/mobile */
+    }
+
+    .service-image {
+        height: 350px;
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hero-services {
+        min-height: 40vh;
+        /* Adjust hero height */
+    }
+
+    .service-content h3 {
+        font-size: 1.75rem;
+    }
+
+    .service-brief {
+        font-size: 1rem;
+    }
+
+    .cta-section {
+        padding: 60px 0;
+    }
+
+    .cta-section h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .services-wrapper {
+        gap: 50px;
+        margin-top: 30px;
+    }
+
+    .service-image {
+        height: 250px;
+    }
+
+    .service-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .service-features-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .process-card {
+        padding: 25px 20px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+    }
 }
