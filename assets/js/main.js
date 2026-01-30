@@ -1,14 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (mobileToggle) {
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (mobileToggle && navLinks) {
         mobileToggle.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            // Toggle icon
-            const icon = mobileToggle.querySelector('svg');
-            // Re-render handled by Lucide if needed, but simple CSS toggle is enough usually.
+            mobileToggle.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.classList.remove('active');
+            });
         });
     }
 
@@ -18,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 // Close mobile menu if open
@@ -27,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const headerOffset = 85;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-    
+
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: "smooth"
@@ -47,4 +53,20 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.style.boxShadow = 'var(--shadow-sm)';
         }
     });
+
+    // Hero Background Slideshow
+    const slides = document.querySelectorAll('.hero-slideshow .slide');
+    if (slides.length > 0) {
+        let currentSlide = 0;
+        const slideInterval = 5000; // Change every 5 seconds
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Auto-change slides
+        setInterval(nextSlide, slideInterval);
+    }
 });

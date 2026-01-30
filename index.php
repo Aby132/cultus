@@ -30,24 +30,81 @@
     
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 
     <?php include 'includes/header.php'; ?>
 
     <!-- Hero Section -->
-    <header id="home" class="hero">
+    <header id="home" class="hero hero-redesigned">
+        <!-- Background Slideshow -->
+        <div class="hero-slideshow">
+            <div class="slide active" style="background-image: url('assets/images/pexels-86419958-8956453.jpg');"></div>
+            <div class="slide" style="background-image: url('assets/images/hero-slide-2.jpg');"></div>
+            <div class="slide" style="background-image: url('assets/images/pexels-freestocks-122164.jpg');"></div>
+        </div>
         <div class="hero-overlay"></div>
+        
         <div class="container hero-content">
-            <h1 class="hero-title animate-fade-up">Global Supply. <br>Trusted Protection. <br>Quality Exports.</h1>
-            <p class="hero-subtitle animate-fade-up delay-100">
-                Lightning Protection <span class="divider">|</span> Garment Exports <span class="divider">|</span> Custom Import–Export Solutions
-            </p>
-            <div class="hero-cta-group animate-fade-up delay-200">
-                <a href="lightning.php" class="btn btn-accent">Lightning Protection</a>
-                <a href="garments.php" class="btn btn-primary">Garments Export</a>
-                <a href="trade.php" class="btn btn-secondary">Import–Export Services</a>
+            <div class="hero-text">
+                <h1 class="hero-title animate-fade-up">
+                    Global Supply.<br>
+                    <span class="text-accent">Trusted Protection.</span><br>
+                    Quality Exports.
+                </h1>
+                <p class="hero-subtitle animate-fade-up delay-100">
+                    Your comprehensive partner for industrial protection, apparel manufacturing, and international trade solutions.
+                </p>
             </div>
+            
+            <!-- Service Cards -->
+            <div class="hero-services animate-fade-up delay-200">
+                <a href="lightning.php" class="hero-service-card card-lightning">
+                    <div class="card-bg" style="background-image: url('assets/images/pexels-86419958-8956453.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-icon">
+                        <i class="bi bi-lightning-charge-fill"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Lightning Protection</h3>
+                        <p>Industrial & Commercial Safety</p>
+                    </div>
+                    <div class="card-arrow"><i class="bi bi-arrow-right"></i></div>
+                </a>
+                
+                <a href="garments.php" class="hero-service-card card-garments">
+                    <div class="card-bg" style="background-image: url('assets/images/pexels-kaip-996329.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-icon">
+                        <i class="bi bi-scissors"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Garments Export</h3>
+                        <p>Global Fashion Supply Chain</p>
+                    </div>
+                    <div class="card-arrow"><i class="bi bi-arrow-right"></i></div>
+                </a>
+                
+                <a href="trade.php" class="hero-service-card card-trade">
+                    <div class="card-bg" style="background-image: url('assets/images/pexels-tomfisk-3848793.jpg');"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-icon">
+                        <i class="bi bi-globe-americas"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Import–Export</h3>
+                        <p>End-to-End Trade Support</p>
+                    </div>
+                    <div class="card-arrow"><i class="bi bi-arrow-right"></i></div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <i data-lucide="chevron-down"></i>
         </div>
     </header>
 
@@ -109,7 +166,11 @@
                             <li><i data-lucide="shield"></i> Surge Protection</li>
                         </ul>
                         <div class="card-actions">
-                            <a href="lightning.php" class="btn btn-accent btn-full">View Power Solutions</a>
+                            <a href="lightning.php" class="btn-vertical btn-lightning">
+                                <i class="bi bi-lightning-charge-fill"></i>
+                                <span>View Power Solutions</span>
+                                <i class="bi bi-arrow-right-circle"></i>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -129,7 +190,11 @@
                             <li><i data-lucide="scissors"></i> Private Label Mfg</li>
                         </ul>
                         <div class="card-actions">
-                            <a href="garments.php" class="btn btn-primary btn-full">View Apparel Catalog</a>
+                            <a href="garments.php" class="btn-vertical btn-garments">
+                                <i class="bi bi-scissors"></i>
+                                <span>View Apparel Catalog</span>
+                                <i class="bi bi-arrow-right-circle"></i>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -149,7 +214,11 @@
                             <li><i data-lucide="truck"></i> Logistics Coordination</li>
                         </ul>
                         <div class="card-actions">
-                            <a href="trade.php" class="btn btn-secondary btn-full">Explore Trade Services</a>
+                            <a href="trade.php" class="btn-vertical btn-trade">
+                                <i class="bi bi-globe-americas"></i>
+                                <span>Explore Trade Services</span>
+                                <i class="bi bi-arrow-right-circle"></i>
+                            </a>
                         </div>
                     </div>
                 </article>
