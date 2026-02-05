@@ -394,10 +394,11 @@ body {
 }
 
 /* Hero Service Cards - Image Based */
+/* Hero Service Cards - Redesigned (Glassmorphism) */
 .hero-services {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 30px;
 }
 
 .hero-service-card {
@@ -405,122 +406,188 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    min-height: 280px;
-    padding: 25px;
-    border-radius: var(--radius-lg);
+    min-height: 320px;
+    padding: 30px;
+    border-radius: 20px;
     overflow: hidden;
     text-decoration: none;
     color: white;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Background Image Layer */
 .hero-service-card .card-bg {
     position: absolute;
     inset: 0;
     background-size: cover;
     background-position: center;
-    transition: transform 0.5s ease;
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
     z-index: 0;
 }
 
+/* Base Gradient Overlay */
 .hero-service-card .card-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.85) 100%);
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0.2) 40%,
+            rgba(0, 0, 0, 0.8) 100%);
     z-index: 1;
-    transition: background 0.3s ease;
+    transition: opacity 0.5s ease;
+}
+
+/* Glass Effect Content Container */
+/* Note: Since we can't easily wrap the content without changing HTML significantly, 
+   we'll use a pseudo-element on the card itself or style the components to float. 
+   Here we create a 'glass' effect that slides up or appears on hover */
+
+.hero-service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: 1;
+    opacity: 0.6;
+    transition: opacity 0.5s ease;
 }
 
 .hero-service-card:hover .card-bg {
-    transform: scale(1.1);
-}
-
-.hero-service-card:hover .card-overlay {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 90, 52, 0.9) 100%);
+    transform: scale(1.15);
 }
 
 .hero-service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
+/* Icon Styling */
 .hero-service-card .card-icon {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 55px;
-    height: 55px;
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin-bottom: auto;
+    /* Pushes icon to top */
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     z-index: 2;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .hero-service-card .card-icon i {
-    font-size: 1.6rem;
-    color: var(--color-accent);
+    font-size: 1.8rem;
+    color: white;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .hero-service-card:hover .card-icon {
     background: var(--color-accent);
     border-color: var(--color-accent);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
 }
 
 .hero-service-card:hover .card-icon i {
     color: var(--text-dark);
 }
 
+/* Text Content */
 .hero-service-card .card-info {
     position: relative;
     z-index: 2;
+    transform: translateY(0);
+    transition: transform 0.5s ease;
 }
 
 .hero-service-card .card-info h3 {
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
 }
 
 .hero-service-card .card-info p {
-    font-size: 0.9rem;
-    opacity: 0.85;
+    font-size: 0.95rem;
+    opacity: 0.9;
     margin: 0;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
 }
 
+/* Arrow Interaction */
 .hero-service-card .card-arrow {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
     border-radius: 50%;
     z-index: 2;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(0.8);
+    opacity: 0;
+}
+
+.hero-service-card:hover .card-arrow {
+    transform: scale(1);
+    opacity: 1;
+    background: white;
 }
 
 .hero-service-card .card-arrow i {
     font-size: 1.2rem;
-    color: white;
+    color: var(--color-primary);
     transition: transform 0.3s ease;
 }
 
-.hero-service-card:hover .card-arrow {
-    background: var(--color-accent);
+.hero-service-card:hover .card-arrow i {
+    transform: rotate(-45deg);
+    /* Arrow points diagonal up-right contextually implies 'go' */
+    color: var(--text-dark);
 }
 
-.hero-service-card:hover .card-arrow i {
-    color: var(--text-dark);
-    transform: translateX(3px);
+/* Responsive Grid */
+@media (max-width: 992px) {
+    .hero-services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-services {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-service-card {
+        min-height: 260px;
+    }
+
+    .hero-service-card .card-arrow {
+        opacity: 1;
+        transform: scale(1);
+        background: rgba(255, 255, 255, 0.15);
+    }
 }
 
 /* Scroll Indicator */
