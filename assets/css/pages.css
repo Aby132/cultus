@@ -71,7 +71,7 @@
 }
 
 .page-hero-garments::before {
-    background-image: url('https://images.unsplash.com/photo-1558171813-4c088753af8f?q=80&w=1920&auto=format&fit=crop');
+    background-image: url('../images/pexels-kaip-996329.jpg');
     background-color: #2d3436;
 }
 
