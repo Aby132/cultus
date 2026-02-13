@@ -75,7 +75,7 @@
                 <p class="mod-subtext mod-subtext--light">Internationally certified products for every protection need.</p>
             </div>
             <div class="mod-card-grid mod-card-grid--4">
-                <a href="quote.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
+                <a href="ese-lightning-arresters.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
                     <img src="https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?q=80&w=600&auto=format&fit=crop" alt="ESE Lightning Arresters" loading="lazy">
                     <div class="mod-imgcard__overlay"></div>
                     <div class="mod-imgcard__content">
@@ -84,7 +84,7 @@
                         <span class="mod-imgcard__link"><span>Learn More</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></span>
                     </div>
                 </a>
-                <a href="quote.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
+                <a href="earthing-grounding.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
                     <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=600&auto=format&fit=crop" alt="Earthing & Grounding" loading="lazy">
                     <div class="mod-imgcard__overlay"></div>
                     <div class="mod-imgcard__content">
@@ -93,7 +93,7 @@
                         <span class="mod-imgcard__link"><span>Learn More</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></span>
                     </div>
                 </a>
-                <a href="quote.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
+                <a href="surge-protection.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
                     <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=600&auto=format&fit=crop" alt="Surge Protection" loading="lazy">
                     <div class="mod-imgcard__overlay"></div>
                     <div class="mod-imgcard__content">
@@ -102,7 +102,7 @@
                         <span class="mod-imgcard__link"><span>Learn More</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></span>
                     </div>
                 </a>
-                <a href="quote.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
+                <a href="lightning-accessories.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
                     <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=600&auto=format&fit=crop" alt="Accessories" loading="lazy">
                     <div class="mod-imgcard__overlay"></div>
                     <div class="mod-imgcard__content">

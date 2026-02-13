@@ -1038,6 +1038,19 @@
         flex-direction: column;
     }
 
+    .mod-hero__title {
+        font-size: 2rem;
+        word-wrap: break-word;
+        /* Prevent overflow */
+        padding: 0 10px;
+        /* Extra safety padding */
+    }
+
+    .mod-hero__sub {
+        font-size: 0.95rem;
+        padding: 0 10px;
+    }
+
     .mod-btn {
         justify-content: center;
     }

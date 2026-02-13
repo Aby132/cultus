@@ -75,7 +75,7 @@
                 <p class="mod-subtext mod-subtext--light">Diverse products for diverse markets worldwide.</p>
             </div>
             <div class="mod-card-grid mod-card-grid--4">
-                <a href="quote.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
+                <a href="industrial-materials.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
                     <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop" alt="Industrial Materials" loading="lazy">
                     <div class="mod-imgcard__overlay"></div>
                     <div class="mod-imgcard__content">
@@ -84,7 +84,7 @@
                         <span class="mod-imgcard__link"><span>Learn More</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></span>
                     </div>
                 </a>
-                <a href="quote.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
+                <a href="consumer-goods.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
                     <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600&auto=format&fit=crop" alt="Consumer Goods" loading="lazy">
                     <div class="mod-imgcard__overlay"></div>
                     <div class="mod-imgcard__content">
@@ -93,7 +93,7 @@
                         <span class="mod-imgcard__link"><span>Learn More</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></span>
                     </div>
                 </a>
-                <a href="quote.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
+                <a href="machinery.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
                     <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=600&auto=format&fit=crop" alt="Machinery" loading="lazy">
                     <div class="mod-imgcard__overlay"></div>
                     <div class="mod-imgcard__content">
@@ -102,7 +102,7 @@
                         <span class="mod-imgcard__link"><span>Learn More</span> <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></span>
                     </div>
                 </a>
-                <a href="quote.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
+                <a href="agriculture.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
                     <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=600&auto=format&fit=crop" alt="Agriculture" loading="lazy">
                     <div class="mod-imgcard__overlay"></div>
                     <div class="mod-imgcard__content">
@@ -112,7 +112,7 @@
                     </div>
                 </a>
             </div>
-            <a href="quote.php" class="mod-wide-card" style="display: flex; text-decoration: none; color: inherit;">
+            <a href="custom-sourcing.php" class="mod-wide-card" style="display: flex; text-decoration: none; color: inherit;">
                 <div class="mod-wide-card__icon"><i data-lucide="package"></i></div>
                 <div class="mod-wide-card__body">
                     <h3>Custom Products</h3>
