@@ -212,26 +212,6 @@
         </div>
     </section>
 
-    <!-- Export Markets -->
-    <section class="mod-section">
-        <div class="container">
-            <div class="mod-section-head">
-                <span class="mod-label"><i data-lucide="globe" style="width:14px;height:14px;"></i> Global Reach</span>
-                <h2 class="mod-heading">Export Markets</h2>
-                <p class="mod-subtext">We serve clients across the globe.</p>
-            </div>
-            <div class="mod-tag-cloud">
-                <span class="mod-tag"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Middle East</span>
-                <span class="mod-tag"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Europe</span>
-                <span class="mod-tag"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Australia</span>
-                <span class="mod-tag"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> New Zealand</span>
-                <span class="mod-tag"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Africa</span>
-                <span class="mod-tag"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> South Asia</span>
-                <span class="mod-tag"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> USA</span>
-                <span class="mod-tag"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Canada</span>
-            </div>
-        </div>
-    </section>
 
     <!-- Packaging & Logistics -->
     <section class="mod-section mod-section--soft">
