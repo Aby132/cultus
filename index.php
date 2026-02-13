@@ -265,7 +265,7 @@
                         </div>
                         <div class="contact-card-content">
                             <h4>Call Us</h4>
-                            <p><a href="tel:+919818747608">+91 981 874 7608</a></p>
+                            <p><a href="tel:+919818747608">+91 907 402 0854</a></p>
                         </div>
                     </div>
                     

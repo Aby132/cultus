@@ -71,7 +71,7 @@ $basePath = isset($basePath) ? $basePath : '';
                         <div class="contact-icon"><i data-lucide="phone"></i></div>
                         <div class="contact-text">
                             <span>Call Us</span>
-                            <p>+91 981 874 7608</p>
+                            <p>+91 907 402 0854</p>
                         </div>
                     </div>
                 </div>

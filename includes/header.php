@@ -7,7 +7,7 @@ $basePath = isset($basePath) ? $basePath : '';
     <div class="container top-bar-content">
         <div class="top-bar-left">
             <span><i data-lucide="mail"></i> info@cultusindia.com</span>
-            <span><i data-lucide="phone"></i> +91 981 874 7608</span>
+            <span><i data-lucide="phone"></i> +91  907 402 0854</span>
         </div>
        
     </div>
