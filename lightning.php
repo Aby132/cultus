@@ -85,7 +85,7 @@
                     </div>
                 </a>
                 <a href="earthing-grounding.php" class="mod-imgcard" style="display: block; text-decoration: none; color: inherit;">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?q=80&w=600&auto=format&fit=crop" alt="Earthing & Grounding" loading="lazy">
+                    <img src="assets/images/earthing-grounding.png" alt="Earthing &amp; Grounding" loading="lazy">
                     <div class="mod-imgcard__overlay"></div>
                     <div class="mod-imgcard__content">
                         <h3>Earthing &amp; Grounding</h3>

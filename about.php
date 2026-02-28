@@ -331,6 +331,58 @@
         </div>
     </section>
 
+    <!-- Our Presence Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Our Presence</h2>
+                <p class="section-desc">Serving clients across India from our regional offices</p>
+                <div class="header-line"></div>
+            </div>
+            <div class="presence-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:2.5rem;">
+
+                <!-- Kerala HQ -->
+                <div class="value-card" style="text-align:center;">
+                    <div class="value-icon">
+                        <i class="bi bi-building-fill" style="font-size:1.6rem;"></i>
+                    </div>
+                    <h3>Kerala — Headquarters</h3>
+                    <p style="font-size:0.95rem;line-height:1.7;">
+                        Bus Stand, Municipal Complex,<br>
+                        Cultus India, Kottaramattom,<br>
+                        Pala, Kerala 686575
+                    </p>
+                </div>
+
+                <!-- Delhi -->
+                <div class="value-card" style="text-align:center;">
+                    <div class="value-icon">
+                        <i class="bi bi-geo-alt-fill" style="font-size:1.6rem;"></i>
+                    </div>
+                    <h3>Delhi Office</h3>
+                    <p style="font-size:0.95rem;line-height:1.7;">
+                        320, Vardhman Sunrise Plaza,<br>
+                        Vasundhara Enclave,<br>
+                        Delhi 110096
+                    </p>
+                </div>
+
+                <!-- Gujarat -->
+                <div class="value-card" style="text-align:center;">
+                    <div class="value-icon">
+                        <i class="bi bi-geo-alt-fill" style="font-size:1.6rem;"></i>
+                    </div>
+                    <h3>Gujarat Office</h3>
+                    <p style="font-size:0.95rem;line-height:1.7;">
+                        Aminagar, Bhuj,<br>
+                        Gujarat 370001
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container text-center">

@@ -227,6 +227,41 @@
         </div>
     </section>
 
+    <!-- Our Presence Section -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Our Presence</h2>
+                <p class="section-desc">Serving clients across India from our regional offices</p>
+                <div class="header-line"></div>
+            </div>
+            <div class="presence-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-top:2.5rem;">
+
+                <!-- Kerala HQ -->
+                <div class="feature-card" style="text-align:center;">
+                    <div class="icon-box"><i class="bi bi-building-fill"></i></div>
+                    <h3>Kerala &mdash; Headquarters</h3>
+                    <p>Bus Stand, Municipal Complex,<br>Cultus India, Kottaramattom,<br>Pala, Kerala 686575</p>
+                </div>
+
+                <!-- Delhi -->
+                <div class="feature-card" style="text-align:center;">
+                    <div class="icon-box"><i class="bi bi-geo-alt-fill"></i></div>
+                    <h3>Delhi Office</h3>
+                    <p>320, Vardhman Sunrise Plaza,<br>Vasundhara Enclave,<br>Delhi 110096</p>
+                </div>
+
+                <!-- Gujarat -->
+                <div class="feature-card" style="text-align:center;">
+                    <div class="icon-box"><i class="bi bi-geo-alt-fill"></i></div>
+                    <h3>Gujarat Office</h3>
+                    <p>Aminagar, Bhuj,<br>Gujarat 370001</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact-section section-padding">
         <div class="container">
@@ -244,8 +279,8 @@
                             <i class="bi bi-geo-alt-fill"></i>
                         </div>
                         <div class="contact-card-content">
-                            <h4>Bus Stand, Municipal Complex, Cultus India, Kottaramattom, Pala, Kerala 686575</h4>
-                            <p>India</p>
+                            <h4>Headquarters — Kerala</h4>
+                            <p>Bus Stand, Municipal Complex, Cultus India, Kottaramattom, Pala, Kerala 686575</p>
                         </div>
                     </div>
                     

@@ -22,16 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
     dropdownTriggers.forEach(trigger => {
         trigger.addEventListener('click', (e) => {
-            // Check if click was on the icon
-            const isIconClick = e.target.closest('.dropdown-icon') || e.target.closest('svg');
-
-            // Only prevent default and toggle on mobile IF icon is clicked
-            if (window.innerWidth <= 768 && isIconClick) {
+            // On mobile, always prevent navigation and toggle the dropdown
+            if (window.innerWidth <= 768) {
                 e.preventDefault();
                 const dropdown = trigger.closest('.dropdown');
                 dropdown.classList.toggle('open');
             }
-            // Otherwise allow default navigation to services.php
+            // On desktop, allow default navigation to services.php
         });
     });
 

@@ -74,6 +74,10 @@ body {
     backdrop-filter: blur(20px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
     transition: var(--transition-normal);
+    overflow: visible;
+    /* Prevent dropdown from being clipped */
+    isolation: isolate;
+    /* Establish independent stacking context */
 }
 
 .nav-container {
@@ -81,6 +85,10 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 85px;
+    overflow: visible;
+    /* Ensure dropdown is never clipped */
+    position: relative;
+    z-index: 1;
 }
 
 /* Logo Styles */
@@ -228,14 +236,15 @@ body {
     background: white;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
     border-radius: var(--radius-lg);
-    z-index: 2000;
-    /* Ensure it's above hero content */
+    z-index: 9999;
+    /* High enough to always be above hero sections */
     padding: 12px;
     min-width: 280px;
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(0, 0, 0, 0.05);
+    pointer-events: none;
 }
 
 .dropdown-menu::before {
@@ -252,6 +261,7 @@ body {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
+    pointer-events: all;
 }
 
 .dropdown-menu li a {
@@ -1656,6 +1666,7 @@ body {
         gap: 0;
         z-index: 999;
         overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .nav-links.active {
@@ -1683,9 +1694,20 @@ body {
         width: 100%;
     }
 
+    .dropdown {
+        position: static;
+        width: 100%;
+    }
+
+    .dropdown::after {
+        display: none;
+    }
+
     .dropdown-menu {
         position: static;
-        transform: none;
+        left: auto;
+        right: auto;
+        transform: none !important;
         box-shadow: none;
         border: none;
         opacity: 0;
@@ -1693,12 +1715,11 @@ body {
         max-height: 0;
         overflow: hidden;
         width: 100%;
-        /* Back to 100% of container */
         min-width: 100%;
         margin: 0;
         padding: 0;
         background: #f8f9fa;
-        transition: all 0.3s ease;
+        transition: opacity 0.3s ease, max-height 0.3s ease, visibility 0.3s ease;
         border-radius: 0;
     }
 
@@ -1707,45 +1728,55 @@ body {
         visibility: visible;
         max-height: 800px;
         margin-top: 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.05);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        border-top: 1px solid rgba(0, 0, 0, 0.07);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
     }
 
     .dropdown-menu li {
         width: 100%;
         margin: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .dropdown-menu li:last-child {
+        border-bottom: none;
     }
 
     .dropdown-menu li a {
-        padding: 20px;
+        padding: 16px 20px;
         border-radius: 0;
-        justify-content: center;
-        text-align: center;
+        justify-content: flex-start;
+        text-align: left;
         width: 100%;
+        box-sizing: border-box;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        gap: 14px;
         margin: 0;
+        transform: none !important;
     }
 
     .dropdown-menu li a:hover {
-        background: rgba(0, 0, 0, 0.03);
+        background: rgba(0, 90, 52, 0.05);
+        transform: none !important;
     }
 
     .dropdown-menu li a div {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        text-align: left;
     }
 
     .dropdown-menu li a i {
-        margin-bottom: 5px;
+        margin-bottom: 0;
         margin-right: 0;
-        font-size: 1.5rem;
-    }
-
-    .dropdown-menu li a:hover {
-        background: rgba(0, 0, 0, 0.03);
+        font-size: 1.1rem;
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+        padding: 6px;
     }
 
     .dropdown.open .dropdown-icon {
