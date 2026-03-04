@@ -1,6 +1,3 @@
-<?php
-$quoteStatus = $_GET['status'] ?? '';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,19 +90,9 @@ $quoteStatus = $_GET['status'] ?? '';
                         <p>Fill in your information and we'll contact you shortly</p>
                     </div>
 
-                    <?php if ($quoteStatus === 'success'): ?>
-                    <div class="form-alert form-alert-success">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Quote request sent! We'll review your requirements and respond within 24 hours.</span>
-                    </div>
-                    <?php elseif ($quoteStatus === 'error'): ?>
-                    <div class="form-alert form-alert-error">
-                        <i class="bi bi-exclamation-triangle-fill"></i>
-                        <span>Oops! Something went wrong. Please try again or email us at <a href="mailto:escoltrix1@gmail.com">escoltrix1@gmail.com</a>.</span>
-                    </div>
-                    <?php endif; ?>
+                    <div id="quoteAlert" style="display:none;"></div>
 
-                    <form class="quote-form" action="send-quote.php" method="POST">
+                    <form id="quoteForm" class="quote-form" novalidate>
                         <input type="hidden" name="service" id="selectedService" value="">
                         
                         <div class="form-row">
@@ -155,8 +142,9 @@ $quoteStatus = $_GET['status'] ?? '';
 - Any other details..." required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary btn-quote-submit">
-                            <i class="bi bi-send-fill"></i> Submit Quote Request
+                        <button type="submit" id="quoteSubmitBtn" class="btn btn-primary btn-quote-submit">
+                            <span class="btn-text"><i class="bi bi-send-fill"></i> Submit Quote Request</span>
+                            <span class="btn-loading" style="display:none;"><i class="bi bi-arrow-repeat spin-icon"></i> Sending...</span>
                         </button>
                     </form>
                 </div>
@@ -198,23 +186,105 @@ $quoteStatus = $_GET['status'] ?? '';
 
     <?php include 'includes/footer.php'; ?>
 
+    <!-- Toast Notification -->
+    <div id="toastOverlay"></div>
+    <div id="toastCard">
+        <div class="toast-band"></div>
+        <div class="toast-body">
+            <div class="toast-icon-wrap">
+                <i id="toastIcon" class="bi"></i>
+            </div>
+            <p class="toast-title" id="toastTitle"></p>
+            <p class="toast-msg"  id="toastMsg"></p>
+            <button class="toast-close-btn" onclick="closeToast()">Got it</button>
+        </div>
+        <div class="toast-progress">
+            <div class="toast-progress-bar" id="toastBar"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="assets/js/main.js"></script>
     <script>
         lucide.createIcons();
-        
+
+        // ── Toast helpers ──
+        let toastTimer;
+        function showToast(success, title, msg) {
+            const overlay = document.getElementById('toastOverlay');
+            const card    = document.getElementById('toastCard');
+            const icon    = document.getElementById('toastIcon');
+            const ttl     = document.getElementById('toastTitle');
+            const tmsg    = document.getElementById('toastMsg');
+            const bar     = document.getElementById('toastBar');
+
+            card.className  = success ? 'toast-success' : 'toast-error';
+            icon.className  = success ? 'bi bi-check-circle-fill' : 'bi bi-x-circle-fill';
+            ttl.textContent  = success ? 'Quote Request Sent!' : 'Failed to Send';
+            tmsg.textContent = msg;
+
+            bar.style.transition = 'none';
+            bar.style.transform  = 'scaleX(1)';
+
+            overlay.classList.add('show');
+            card.classList.add('show');
+
+            clearTimeout(toastTimer);
+            if (success) {
+                requestAnimationFrame(() => {
+                    bar.style.transition = 'transform 5s linear';
+                    bar.style.transform  = 'scaleX(0)';
+                });
+                toastTimer = setTimeout(closeToast, 5000);
+            }
+        }
+        function closeToast() {
+            clearTimeout(toastTimer);
+            document.getElementById('toastOverlay').classList.remove('show');
+            document.getElementById('toastCard').classList.remove('show');
+        }
+        document.getElementById('toastOverlay').addEventListener('click', closeToast);
+
         // Service Selection
         const serviceOptions = document.querySelectorAll('.service-option');
         const selectedServiceInput = document.getElementById('selectedService');
-        
+
         serviceOptions.forEach(option => {
             option.addEventListener('click', () => {
-                // Remove active from all
                 serviceOptions.forEach(opt => opt.classList.remove('active'));
-                // Add active to clicked
                 option.classList.add('active');
-                // Update hidden input
                 selectedServiceInput.value = option.dataset.service;
             });
+        });
+
+        // ── AJAX Quote Form ──
+        document.getElementById('quoteForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form    = this;
+            const btn     = document.getElementById('quoteSubmitBtn');
+            const btnText = btn.querySelector('.btn-text');
+            const btnLoad = btn.querySelector('.btn-loading');
+
+            btn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoad.style.display = 'inline-flex';
+
+            try {
+                const res  = await fetch('send-quote.php', { method: 'POST', body: new FormData(form) });
+                const data = await res.json();
+                showToast(data.success, '', data.message);
+                if (data.success) {
+                    form.reset();
+                    serviceOptions.forEach(opt => opt.classList.remove('active'));
+                    selectedServiceInput.value = '';
+                }
+            } catch (err) {
+                showToast(false, '', 'Network error. Please try again.');
+            }
+
+            btn.disabled = false;
+            btnText.style.display = 'inline-flex';
+            btnLoad.style.display = 'none';
         });
     </script>
 </body>

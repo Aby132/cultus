@@ -1,6 +1,3 @@
-<?php
-$contactStatus = $_GET['status'] ?? '';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -322,19 +319,9 @@ $contactStatus = $_GET['status'] ?? '';
                 <div class="contact-form-wrapper">
                     <h3>Send Us a Message</h3>
 
-                    <?php if ($contactStatus === 'success'): ?>
-                    <div class="form-alert form-alert-success">
-                        <i class="bi bi-check-circle-fill"></i>
-                        <span>Thank you! Your message has been sent. We'll get back to you within 1 business day.</span>
-                    </div>
-                    <?php elseif ($contactStatus === 'error'): ?>
-                    <div class="form-alert form-alert-error">
-                        <i class="bi bi-exclamation-triangle-fill"></i>
-                        <span>Oops! Something went wrong. Please try again or email us directly at <a href="mailto:escoltrix1@gmail.com">escoltrix1@gmail.com</a>.</span>
-                    </div>
-                    <?php endif; ?>
+                    <div id="contactAlert" style="display:none;"></div>
 
-                    <form class="contact-form" action="send-contact.php" method="POST">
+                    <form id="contactForm" class="contact-form" novalidate>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Your Name</label>
@@ -359,8 +346,9 @@ $contactStatus = $_GET['status'] ?? '';
                             <label for="message">Your Message</label>
                             <textarea id="message" name="message" rows="5" placeholder="Tell us about your requirements..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-submit">
-                            <i class="bi bi-send-fill"></i> Send Message
+                        <button type="submit" id="contactSubmitBtn" class="btn btn-primary btn-submit">
+                            <span class="btn-text"><i class="bi bi-send-fill"></i> Send Message</span>
+                            <span class="btn-loading" style="display:none;"><i class="bi bi-arrow-repeat spin-icon"></i> Sending...</span>
                         </button>
                     </form>
                 </div>
@@ -370,10 +358,91 @@ $contactStatus = $_GET['status'] ?? '';
 
     <?php include 'includes/footer.php'; ?>
 
+    <!-- Toast Notification -->
+    <div id="toastOverlay"></div>
+    <div id="toastCard">
+        <div class="toast-band"></div>
+        <div class="toast-body">
+            <div class="toast-icon-wrap">
+                <i id="toastIcon" class="bi"></i>
+            </div>
+            <p class="toast-title" id="toastTitle"></p>
+            <p class="toast-msg"  id="toastMsg"></p>
+            <button class="toast-close-btn" onclick="closeToast()">Got it</button>
+        </div>
+        <div class="toast-progress">
+            <div class="toast-progress-bar" id="toastBar"></div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
     <script>
         lucide.createIcons();
+
+        // ── Toast helpers ──
+        let toastTimer;
+        function showToast(success, title, msg) {
+            const overlay = document.getElementById('toastOverlay');
+            const card    = document.getElementById('toastCard');
+            const icon    = document.getElementById('toastIcon');
+            const ttl     = document.getElementById('toastTitle');
+            const tmsg    = document.getElementById('toastMsg');
+            const bar     = document.getElementById('toastBar');
+
+            card.className  = success ? 'toast-success' : 'toast-error';
+            icon.className  = success ? 'bi bi-check-circle-fill' : 'bi bi-x-circle-fill';
+            ttl.textContent  = success ? 'Message Sent!' : 'Failed to Send';
+            tmsg.textContent = msg;
+
+            // Progress bar for auto-dismiss on success
+            bar.style.transition = 'none';
+            bar.style.transform  = 'scaleX(1)';
+
+            overlay.classList.add('show');
+            card.classList.add('show');
+
+            clearTimeout(toastTimer);
+            if (success) {
+                requestAnimationFrame(() => {
+                    bar.style.transition = 'transform 5s linear';
+                    bar.style.transform  = 'scaleX(0)';
+                });
+                toastTimer = setTimeout(closeToast, 5000);
+            }
+        }
+        function closeToast() {
+            clearTimeout(toastTimer);
+            document.getElementById('toastOverlay').classList.remove('show');
+            document.getElementById('toastCard').classList.remove('show');
+        }
+        document.getElementById('toastOverlay').addEventListener('click', closeToast);
+
+        // ── AJAX Contact Form ──
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form    = this;
+            const btn     = document.getElementById('contactSubmitBtn');
+            const btnText = btn.querySelector('.btn-text');
+            const btnLoad = btn.querySelector('.btn-loading');
+
+            btn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoad.style.display = 'inline-flex';
+
+            try {
+                const res  = await fetch('send-contact.php', { method: 'POST', body: new FormData(form) });
+                const data = await res.json();
+                showToast(data.success, '', data.message);
+                if (data.success) form.reset();
+            } catch (err) {
+                showToast(false, '', 'Network error. Please try again or email us directly.');
+            }
+
+            btn.disabled = false;
+            btnText.style.display = 'inline-flex';
+            btnLoad.style.display = 'none';
+        });
     </script>
 </body>
 </html>

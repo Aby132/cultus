@@ -2035,8 +2035,218 @@ body {
 }
 
 /* =============================================
-   FORM ALERT BANNERS (Contact & Quote)
+   TOAST NOTIFICATION SYSTEM
    ============================================= */
+
+/* Overlay backdrop */
+#toastOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 99998;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#toastOverlay.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Toast card */
+#toastCard {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.85);
+    z-index: 99999;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+    width: clamp(320px, 90vw, 480px);
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+        transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+
+#toastCard.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: all;
+}
+
+/* Color band at top */
+.toast-band {
+    height: 6px;
+    width: 100%;
+}
+
+.toast-success .toast-band {
+    background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.toast-error .toast-band {
+    background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+/* Body */
+.toast-body {
+    padding: 32px 30px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+}
+
+/* Big icon circle */
+.toast-icon-wrap {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+}
+
+.toast-success .toast-icon-wrap {
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.12);
+}
+
+.toast-error .toast-icon-wrap {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0.12);
+}
+
+.toast-icon-wrap i {
+    font-size: 2rem;
+}
+
+.toast-success .toast-icon-wrap i {
+    color: #10b981;
+}
+
+.toast-error .toast-icon-wrap i {
+    color: #ef4444;
+}
+
+/* Title */
+.toast-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    line-height: 1.2;
+    margin: 0;
+}
+
+.toast-success .toast-title {
+    color: #064e3b;
+}
+
+.toast-error .toast-title {
+    color: #7f1d1d;
+}
+
+/* Message */
+.toast-msg {
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Dismiss button */
+.toast-close-btn {
+    margin-top: 8px;
+    padding: 10px 28px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.toast-success .toast-close-btn {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+}
+
+.toast-success .toast-close-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+}
+
+.toast-error .toast-close-btn {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+}
+
+.toast-error .toast-close-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+}
+
+/* Progress bar auto-dismiss (success only) */
+.toast-progress {
+    height: 4px;
+    background: rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+}
+
+.toast-progress-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    transform-origin: left;
+    transition: transform linear;
+}
+
+.toast-success .toast-progress-bar {
+    background: #10b981;
+}
+
+.toast-error .toast-progress-bar {
+    background: #ef4444;
+}
+
+/* ── Button loading spinner ── */
+.btn-text,
+.btn-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin-icon {
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
+}
+
+/* Keep old .form-alert as fallback (hidden by default) */
+.form-alert {
+    display: none !important;
+}
+
 .form-alert {
     display: flex;
     align-items: flex-start;
@@ -2098,4 +2308,23 @@ body {
 
 .form-alert-error span a {
     color: #991b1b;
+}
+
+/* ── Button loading spinner ── */
+.btn-text,
+.btn-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin-icon {
+    animation: spin 0.8s linear infinite;
+    display: inline-block;
 }
