@@ -1,0 +1,12 @@
+# Environment secrets — NEVER commit
+.env
+
+# Composer dependencies (if added later)
+/vendor/
+
+# Editor & OS
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

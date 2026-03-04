@@ -2033,3 +2033,69 @@ body {
         font-size: 0.8rem;
     }
 }
+
+/* =============================================
+   FORM ALERT BANNERS (Contact & Quote)
+   ============================================= */
+.form-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    animation: alertSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes alertSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-alert i {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.form-alert span a {
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.form-alert-success {
+    background: #ecfdf5;
+    border: 1px solid #6ee7b7;
+    color: #065f46;
+}
+
+.form-alert-success i {
+    color: #10b981;
+}
+
+.form-alert-success span a {
+    color: #065f46;
+}
+
+.form-alert-error {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #991b1b;
+}
+
+.form-alert-error i {
+    color: #ef4444;
+}
+
+.form-alert-error span a {
+    color: #991b1b;
+}

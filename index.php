@@ -1,3 +1,6 @@
+<?php
+$contactStatus = $_GET['status'] ?? '';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -318,7 +321,20 @@
                 <!-- Contact Form -->
                 <div class="contact-form-wrapper">
                     <h3>Send Us a Message</h3>
-                    <form class="contact-form" action="#" method="POST">
+
+                    <?php if ($contactStatus === 'success'): ?>
+                    <div class="form-alert form-alert-success">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Thank you! Your message has been sent. We'll get back to you within 1 business day.</span>
+                    </div>
+                    <?php elseif ($contactStatus === 'error'): ?>
+                    <div class="form-alert form-alert-error">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <span>Oops! Something went wrong. Please try again or email us directly at <a href="mailto:escoltrix1@gmail.com">escoltrix1@gmail.com</a>.</span>
+                    </div>
+                    <?php endif; ?>
+
+                    <form class="contact-form" action="send-contact.php" method="POST">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">Your Name</label>

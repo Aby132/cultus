@@ -1,3 +1,6 @@
+<?php
+$quoteStatus = $_GET['status'] ?? '';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,8 +92,20 @@
                         <h3>Your Details</h3>
                         <p>Fill in your information and we'll contact you shortly</p>
                     </div>
-                    
-                    <form class="quote-form" action="#" method="POST">
+
+                    <?php if ($quoteStatus === 'success'): ?>
+                    <div class="form-alert form-alert-success">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <span>Quote request sent! We'll review your requirements and respond within 24 hours.</span>
+                    </div>
+                    <?php elseif ($quoteStatus === 'error'): ?>
+                    <div class="form-alert form-alert-error">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <span>Oops! Something went wrong. Please try again or email us at <a href="mailto:escoltrix1@gmail.com">escoltrix1@gmail.com</a>.</span>
+                    </div>
+                    <?php endif; ?>
+
+                    <form class="quote-form" action="send-quote.php" method="POST">
                         <input type="hidden" name="service" id="selectedService" value="">
                         
                         <div class="form-row">
